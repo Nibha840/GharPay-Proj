@@ -1,0 +1,22 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gharpayy-gradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+  </defs>
+  <rect x="12" y="12" width="104" height="104" rx="28" fill="#F8FAFC" />
+  <rect x="20" y="24" width="88" height="88" rx="24" fill="url(#gharpayy-gradient)" />
+
+  <!-- House -->
+  <path d="M40 76 V56 L64 40 L88 56 V76 Z" fill="#EFF6FF" />
+  <rect x="50" y="62" width="28" height="24" rx="4" fill="#DBEAFE" />
+  <rect x="60" y="66" width="8" height="12" rx="2" fill="#BFDBFE" />
+
+  <!-- Dashboard bars -->
+  <rect x="32" y="84" width="10" height="18" rx="3" fill="#93C5FD" />
+  <rect x="50" y="84" width="10" height="10" rx="3" fill="#BFDBFE" />
+  <rect x="68" y="84" width="10" height="14" rx="3" fill="#60A5FA" />
+  <rect x="86" y="84" width="10" height="6" rx="3" fill="#1D4ED8" />
+</svg>
+
