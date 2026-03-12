@@ -7,6 +7,7 @@ import { ArrowLeft, Sparkles } from 'lucide-react';
 
 /**
  * Parse free-form lead text and extract structured fields.
+ * Uses POSITION-BASED parsing: words before phone → name, words after → location.
  *
  * Example input:  "Rahul Sharma 9876543210 2BHK Koramangala 12000"
  * Returns: { name, phone, budget, location }
@@ -16,70 +17,76 @@ const parseLeadInput = (text) => {
   if (!text.trim()) return result;
 
   // 1. Extract phone number (Indian 10-digit mobile, optional +91 prefix)
-  const phoneRegex = /(?:\+91[\s-]?)?([6-9]\d{9})/;
+  //    Use \b word boundaries to avoid matching inside larger numbers
+  //    Accept digits starting with 5-9 to cover newer number series
+  const phoneRegex = /\b(?:\+91[\s-]?)?([5-9]\d{9})\b/;
   const phoneMatch = text.match(phoneRegex);
   if (phoneMatch) {
     result.phone = phoneMatch[1];
   }
 
-  // Remove the full phone match from text for further parsing
-  let remaining = phoneMatch
-    ? text.replace(phoneMatch[0], ' ')
-    : text;
+  // 2. Split text around the phone number into "before" and "after" parts
+  let beforePhone = text;
+  let afterPhone = '';
+  if (phoneMatch) {
+    const phoneIndex = text.indexOf(phoneMatch[0]);
+    beforePhone = text.substring(0, phoneIndex);
+    afterPhone = text.substring(phoneIndex + phoneMatch[0].length);
+  }
 
-  // 2. Extract budget — numbers with 4+ digits (not the phone number)
-  //    Also handle patterns like "12L", "1.5Cr", "12,000", "₹12000"
+  // 3. Extract budget from the "after" part (numbers with 4+ digits, or with suffix like L/Cr/K)
   const budgetRegex = /(?:₹\s*)?(\d[\d,]*\.?\d*)\s*(lakhs?|lacs?|l|crores?|cr|k)?\b/gi;
   let budgetMatch;
   let bestBudget = '';
-  while ((budgetMatch = budgetRegex.exec(remaining)) !== null) {
-    const rawNum = budgetMatch[1].replace(/,/g, '');
-    const num = parseFloat(rawNum);
-    const suffix = (budgetMatch[2] || '').toLowerCase();
+  // Search in afterPhone first, then beforePhone
+  const searchParts = [afterPhone, beforePhone];
+  for (const part of searchParts) {
+    budgetRegex.lastIndex = 0;
+    while ((budgetMatch = budgetRegex.exec(part)) !== null) {
+      const rawNum = budgetMatch[1].replace(/,/g, '');
+      const num = parseFloat(rawNum);
+      const suffix = (budgetMatch[2] || '').toLowerCase();
 
-    // Skip small numbers that are unlikely to be budgets (< 1000) unless they have a suffix
-    if (!suffix && (num < 1000 || rawNum.length < 4)) continue;
+      // Skip numbers that look like phone numbers (10+ digits) or too small (< 1000)
+      if (rawNum.length >= 10) continue;
+      if (!suffix && (num < 1000 || rawNum.length < 4)) continue;
 
-    let value = num;
-    if (suffix.startsWith('l') || suffix === 'lac' || suffix === 'lacs') value = num * 100000;
-    else if (suffix.startsWith('cr')) value = num * 10000000;
-    else if (suffix === 'k') value = num * 1000;
+      let value = num;
+      if (suffix.startsWith('l') || suffix === 'lac' || suffix === 'lacs') value = num * 100000;
+      else if (suffix.startsWith('cr')) value = num * 10000000;
+      else if (suffix === 'k') value = num * 1000;
 
-    bestBudget = String(value);
-    // Remove the matched budget from remaining text
-    remaining = remaining.replace(budgetMatch[0], ' ');
-    break; // Take first plausible budget
+      bestBudget = String(value);
+      // Remove the matched budget from the part
+      afterPhone = afterPhone.replace(budgetMatch[0], ' ');
+      beforePhone = beforePhone.replace(budgetMatch[0], ' ');
+      break;
+    }
+    if (bestBudget) break;
   }
   result.budget = bestBudget;
 
-  // 3. Tokenize remaining text
-  const tokens = remaining
+  // 4. Extract NAME from words BEFORE the phone number
+  const nameTokens = beforePhone
+    .replace(/[,|;:\-–—]+/g, ' ')
+    .split(/\s+/)
+    .filter(t => /^[a-zA-Z]+$/.test(t));
+  result.name = nameTokens.join(' ');
+
+  // 5. Extract LOCATION from words AFTER the phone number
+  const afterTokens = afterPhone
     .replace(/[,|;:\-–—]+/g, ' ')
     .split(/\s+/)
     .filter(Boolean);
 
-  // Separate alpha tokens vs property-type tokens (like "2BHK", "3BHK")
   const bhkRegex = /^\d+\.?\d*\s*bhk$/i;
-  const alphaTokens = [];
-  const propertyTokens = [];
-  for (const token of tokens) {
-    if (bhkRegex.test(token)) {
-      propertyTokens.push(token);
-    } else if (/^[a-zA-Z]+$/.test(token)) {
-      alphaTokens.push(token);
+  const locationParts = [];
+  for (const token of afterTokens) {
+    if (bhkRegex.test(token) || /^[a-zA-Z]+$/.test(token)) {
+      locationParts.push(token);
     }
   }
-
-  // 4. Name = first 1-3 alphabetic words (typically first name + last name)
-  //    Location = remaining alphabetic words
-  const nameWords = alphaTokens.slice(0, Math.min(3, alphaTokens.length > 2 ? 2 : alphaTokens.length));
-  const locationWords = alphaTokens.slice(nameWords.length);
-
-  result.name = nameWords.join(' ');
-
-  // Combine location with property type if present
-  const locParts = [...propertyTokens, ...locationWords];
-  result.location = locParts.join(' ');
+  result.location = locationParts.join(' ');
 
   return result;
 };
