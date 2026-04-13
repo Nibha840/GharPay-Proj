@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GharPayy CRM — Complete Interview Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0f172a;--surface:#1e293b;--surface2:#334155;--border:#475569;--text:#e2e8f0;--text2:#94a3b8;--accent:#3b82f6;--accent2:#60a5fa;--green:#22c55e;--red:#ef4444;--amber:#f59e0b;--teal:#14b8a6;--purple:#a78bfa}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;padding:2rem;max-width:900px;margin:0 auto}
+h1{font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,var(--accent2),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.5rem}
+h2{font-size:1.5rem;font-weight:700;color:var(--accent2);margin:2.5rem 0 1rem;padding-bottom:.5rem;border-bottom:2px solid var(--surface2)}
+h3{font-size:1.15rem;font-weight:600;color:var(--teal);margin:1.5rem 0 .75rem}
+h4{font-size:1rem;font-weight:600;color:var(--purple);margin:1.2rem 0 .5rem}
+p{margin:.5rem 0;color:var(--text2)}
+strong{color:var(--text)}
+blockquote{border-left:4px solid var(--accent);background:var(--surface);padding:1rem 1.25rem;border-radius:0 8px 8px 0;margin:1rem 0}
+blockquote p{color:var(--text)}
+code{font-family:'JetBrains Mono',monospace;background:var(--surface2);color:var(--amber);padding:2px 6px;border-radius:4px;font-size:.85em}
+pre{background:var(--surface);border:1px solid var(--surface2);border-radius:10px;padding:1.25rem;overflow-x:auto;margin:1rem 0}
+pre code{background:none;color:#e2e8f0;padding:0}
+table{width:100%;border-collapse:collapse;margin:1rem 0;border-radius:10px;overflow:hidden}
+th{background:var(--accent);color:#fff;padding:10px 14px;text-align:left;font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+td{padding:10px 14px;border-bottom:1px solid var(--surface2);font-size:.9rem;color:var(--text2)}
+tr:nth-child(even){background:var(--surface)}
+tr:hover{background:var(--surface2)}
+ul,ol{margin:.5rem 0 .5rem 1.5rem;color:var(--text2)}
+li{margin:.3rem 0}
+.hero{text-align:center;padding:2rem 0 1rem;border-bottom:1px solid var(--surface2);margin-bottom:2rem}
+.hero p{font-size:1.1rem;color:var(--text2)}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.75rem;font-weight:600}
+.badge-green{background:#16a34a22;color:var(--green);border:1px solid #16a34a55}
+.badge-red{background:#ef444422;color:var(--red);border:1px solid #ef444455}
+.badge-blue{background:#3b82f622;color:var(--accent2);border:1px solid #3b82f655}
+.tip{background:#14b8a615;border:1px solid #14b8a644;border-radius:10px;padding:1rem 1.25rem;margin:1rem 0}
+.tip::before{content:"💡 TIP";display:block;font-weight:700;color:var(--teal);margin-bottom:.25rem;font-size:.8rem}
+.important{background:#3b82f615;border:1px solid #3b82f644;border-radius:10px;padding:1rem 1.25rem;margin:1rem 0}
+.important::before{content:"⚠️ IMPORTANT";display:block;font-weight:700;color:var(--accent2);margin-bottom:.25rem;font-size:.8rem}
+.mistake{background:var(--surface);border-radius:10px;padding:1.25rem;margin:1rem 0;border:1px solid var(--surface2)}
+.mistake-title{font-weight:700;color:var(--red);margin-bottom:.5rem}
+.wrong{color:var(--red);font-weight:600}
+.right{color:var(--green);font-weight:600}
+.toc{background:var(--surface);border-radius:12px;padding:1.5rem 2rem;margin:1.5rem 0}
+.toc a{color:var(--accent2);text-decoration:none;display:block;padding:4px 0;font-size:.9rem}
+.toc a:hover{color:var(--teal);padding-left:8px;transition:all .2s}
+.flow{background:var(--surface);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.8;color:var(--text2);overflow-x:auto;white-space:pre}
+.qa{background:var(--surface);border-radius:12px;padding:1.5rem;margin:1rem 0;border-left:4px solid var(--purple)}
+.qa-q{font-weight:700;color:var(--purple);margin-bottom:.75rem;font-size:1rem}
+.section{animation:fadeIn .5s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+<h1>🏠 GharPayy CRM — Complete Interview Guide</h1>
+<p>From Absolute Beginner to Advanced — Every concept explained step-by-step</p>
+</div>
+
+<div class="toc">
+<h3 style="color:var(--accent2);margin-bottom:.75rem">📑 Table of Contents</h3>
+<a href="#s1">1. What is a CRM?</a>
+<a href="#s2">2. Project Overview — GharPayy</a>
+<a href="#s3">3. Tech Stack Explained</a>
+<a href="#s4">4. React Fundamentals</a>
+<a href="#s5">5. Component Deep Dive</a>
+<a href="#s6">6. State Management — Context API</a>
+<a href="#s7">7. Drag & Drop</a>
+<a href="#s8">8. Regex & Smart Input Parsing</a>
+<a href="#s9">9. Interview Questions & Answers</a>
+<a href="#s10">10. Common Beginner Mistakes</a>
+</div>
+
+<!-- SECTION 1 -->
+<div class="section" id="s1">
+<h2>1. What is a CRM?</h2>
+<h3>Simple Analogy</h3>
+<p>Imagine you run a <strong>property business</strong>. Every day, 50 people call asking about houses. You write each person's info on sticky notes. After a week — 350 sticky notes — total chaos!</p>
+<p>A <strong>CRM (Customer Relationship Management)</strong> system is a <strong>digital notebook</strong> that stores all customer info, tracks where each customer is in the buying process, reminds you to follow up, and shows who's performing best.</p>
+
+<table>
+<tr><th>Term</th><th>Simple Meaning</th><th>Example</th></tr>
+<tr><td><strong>Lead</strong></td><td>Potential customer</td><td>"Rahul called about 2BHK"</td></tr>
+<tr><td><strong>Pipeline</strong></td><td>Stages a lead goes through</td><td>New → Contacted → Booked</td></tr>
+<tr><td><strong>Agent</strong></td><td>Salesperson handling leads</td><td>"Priya handles 15 leads"</td></tr>
+<tr><td><strong>Conversion</strong></td><td>Lead becomes a customer</td><td>Rahul books the flat!</td></tr>
+<tr><td><strong>Source</strong></td><td>Where the lead came from</td><td>Website, WhatsApp, Phone</td></tr>
+</table>
+</div>
+
+<!-- SECTION 2 -->
+<div class="section" id="s2">
+<h2>2. Project Overview — GharPayy</h2>
+<p><strong>GharPayy</strong> is a property CRM for real estate. It tracks property enquiries through a sales pipeline.</p>
+
+<h3>System Architecture</h3>
+<table>
+<tr><th>Layer</th><th>Technology</th><th>Port</th><th>Analogy</th></tr>
+<tr><td>Frontend</td><td>React + Vite + TailwindCSS + shadcn/ui</td><td>5173</td><td>Bank counter (user interacts here)</td></tr>
+<tr><td>Backend</td><td>Node.js + Express.js</td><td>5000</td><td>Bank staff (does the work)</td></tr>
+<tr><td>Database</td><td>MongoDB</td><td>27017</td><td>Bank vault (stores records)</td></tr>
+<tr><td>API</td><td>RESTful APIs</td><td>—</td><td>Intercom between counter & office</td></tr>
+</table>
+
+<h3>The Sales Pipeline</h3>
+<div class="flow">NEW → CONTACTED → REQUIREMENT → SUGGESTED → VISIT_SCHEDULED → VISIT_DONE → BOOKED
+                                                                                         ↘ LOST</div>
+<table>
+<tr><th>Stage</th><th>What Happens</th><th>Example</th></tr>
+<tr><td><span class="badge badge-blue">New</span></td><td>Lead arrived, nobody contacted yet</td><td>Rahul filled a website form</td></tr>
+<tr><td><span class="badge badge-blue">Contacted</span></td><td>Agent called/messaged the lead</td><td>Priya called Rahul</td></tr>
+<tr><td><span class="badge badge-blue">Requirement</span></td><td>Agent understood what lead wants</td><td>2BHK, ₹15K, Koramangala</td></tr>
+<tr><td><span class="badge badge-blue">Suggested</span></td><td>Agent suggested matching properties</td><td>3 properties shared</td></tr>
+<tr><td><span class="badge badge-blue">Visit Scheduled</span></td><td>Visit date is fixed</td><td>Saturday 2 PM</td></tr>
+<tr><td><span class="badge badge-blue">Visit Done</span></td><td>Lead visited the property</td><td>Rahul liked the flat</td></tr>
+<tr><td><span class="badge badge-green">Booked ✅</span></td><td>Lead confirmed and paid!</td><td>Agreement signed</td></tr>
+<tr><td><span class="badge badge-red">Lost ❌</span></td><td>Lead no longer interested</td><td>Found a better deal</td></tr>
+</table>
+</div>
+
+<!-- SECTION 3 -->
+<div class="section" id="s3">
+<h2>3. Tech Stack Explained</h2>
+
+<h3>React</h3>
+<p><strong>Analogy:</strong> A website made of LEGO blocks. Each block = a <strong>component</strong>. Build once, reuse everywhere.</p>
+<p><strong>Why?</strong> Reusable components, fast updates (Virtual DOM), huge community.</p>
+
+<h3>Vite</h3>
+<p><strong>Analogy:</strong> A super-fast translator that converts your code for the browser. Starts in milliseconds, shows changes instantly.</p>
+
+<h3>TailwindCSS</h3>
+<p><strong>Analogy:</strong> Instead of separate CSS files, add tiny styling labels directly: <code>text-2xl font-bold text-slate-900</code></p>
+<table>
+<tr><th>Class</th><th>Meaning</th></tr>
+<tr><td><code>text-2xl</code></td><td>Text size 2x large</td></tr>
+<tr><td><code>font-bold</code></td><td>Bold text</td></tr>
+<tr><td><code>bg-blue-600</code></td><td>Blue background</td></tr>
+<tr><td><code>rounded-lg</code></td><td>Rounded corners</td></tr>
+<tr><td><code>hover:bg-blue-700</code></td><td>Darker blue on mouse hover</td></tr>
+</table>
+
+<h3>shadcn/ui</h3>
+<p>Pre-built beautiful UI components — Card, Table, Button, Dialog. Like a furniture catalog.</p>
+
+<h3>Node.js + Express.js</h3>
+<p><strong>Node.js</strong> = JavaScript on the server. <strong>Express.js</strong> = Framework that makes building APIs easy.</p>
+
+<h3>MongoDB</h3>
+<p><strong>Analogy:</strong> Filing cabinet. Collection = drawer, Document = folder. Flexible — no fixed structure needed.</p>
+</div>
+
+<!-- SECTION 4 -->
+<div class="section" id="s4">
+<h2>4. React Fundamentals</h2>
+
+<h3>4.1 Components</h3>
+<p>A component = <strong>reusable piece of UI</strong>. Like a cookie cutter — one shape, many cookies.</p>
+<pre><code>const StatCard = ({ title, value }) => {
+  return (
+    &lt;div&gt;
+      &lt;h3&gt;{title}&lt;/h3&gt;
+      &lt;p&gt;{value}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+};</code></pre>
+
+<h3>4.2 Props (Properties)</h3>
+<p><strong>Analogy:</strong> Arguments you pass to a function. Like telling someone "make a card with name=Rahul, age=25".</p>
+<pre><code>// Parent PASSES props
+&lt;StatCard title="Total Leads" value={42} variant="primary" /&gt;
+
+// Child RECEIVES props
+const StatCard = ({ title, value, variant = "default" }) => { ... }</code></pre>
+<ul>
+<li>Props flow <strong>ONE WAY</strong>: parent → child</li>
+<li>Props are <strong>read-only</strong></li>
+<li><code>variant = "default"</code> = default value if not provided</li>
+</ul>
+
+<h3>4.3 State (useState)</h3>
+<p><strong>Analogy:</strong> Your personal notepad — things you track and can change yourself.</p>
+<pre><code>const [search, setSearch] = useState("");
+//      ↑            ↑                ↑
+//  current value   updater fn      initial value</code></pre>
+
+<h3>4.4 useEffect — Side Effects</h3>
+<p><strong>Analogy:</strong> Setting an alarm: "When I wake up (component loads), do these things."</p>
+<pre><code>useEffect(() => {
+  fetchLeads();
+  fetchAgents();
+}, []);  // [] = run ONCE when page loads</code></pre>
+
+<h3>4.5 useMemo — Caching Calculations</h3>
+<p><strong>Analogy:</strong> Write answer on paper instead of recalculating every time.</p>
+<pre><code>const leadsByStage = useMemo(() => {
+  // Group leads by stage... expensive operation
+  return map;
+}, [leads]);  // Only recalculate when leads change</code></pre>
+
+<h3>4.6 useCallback — Caching Functions</h3>
+<p>Reuses the same function reference instead of creating a new copy on every render.</p>
+
+<h3>4.7 useNavigate — Page Navigation</h3>
+<pre><code>const navigate = useNavigate();
+navigate('/leads');       // Go to leads page
+navigate(-1);             // Go BACK
+navigate(`/leads/${id}`); // Go to specific lead</code></pre>
+
+<h3>Hooks Summary</h3>
+<table>
+<tr><th>Hook</th><th>Purpose</th><th>Analogy</th></tr>
+<tr><td><code>useState</code></td><td>Track changing data</td><td>Personal notepad</td></tr>
+<tr><td><code>useEffect</code></td><td>Do something on load/change</td><td>Setting an alarm</td></tr>
+<tr><td><code>useMemo</code></td><td>Cache calculations</td><td>Writing answer on paper</td></tr>
+<tr><td><code>useCallback</code></td><td>Cache function references</td><td>Keeping same recipe card</td></tr>
+<tr><td><code>useContext</code></td><td>Share data across components</td><td>Office bulletin board</td></tr>
+<tr><td><code>useNavigate</code></td><td>Move between pages</td><td>Walking between rooms</td></tr>
+</table>
+</div>
+
+<!-- SECTION 5 -->
+<div class="section" id="s5">
+<h2>5. Component Deep Dive</h2>
+
+<h3>5.1 StatCard.jsx</h3>
+<p><strong>Purpose:</strong> Small card showing ONE metric ("Total Leads: 42").</p>
+<h4>VARIANTS Pattern (Config-driven styling)</h4>
+<pre><code>const VARIANTS = {
+  default: { card: "bg-white border-slate-200", icon: "bg-slate-100" },
+  primary: { card: "bg-white border-blue-100",  icon: "bg-blue-50" },
+  accent:  { card: "bg-white border-teal-100",  icon: "bg-teal-50" },
+  warning: { card: "bg-white border-amber-100", icon: "bg-amber-50" },
+};
+const styles = VARIANTS[variant] ?? VARIANTS.default;</code></pre>
+<p><strong>?? (Nullish Coalescing):</strong> If left side is <code>null</code>/<code>undefined</code>, use right side. Unlike <code>||</code>, it doesn't treat <code>0</code> or <code>""</code> as falsy.</p>
+
+<h3>5.2 AddLead.jsx</h3>
+<p><strong>Purpose:</strong> Form to add leads with <strong>Smart Input</strong> that auto-parses pasted text.</p>
+
+<h4>Controlled Components</h4>
+<pre><code>// React state controls the input value
+&lt;input
+  value={form.name}
+  onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+/&gt;</code></pre>
+<p><strong>Spread operator <code>...f</code></strong> copies all fields, then overrides just one. Without it, you'd lose other fields!</p>
+
+<h4>Form Submission Flow</h4>
+<div class="flow">User clicks "Create Lead"
+  ↓ handleSubmit(e)
+  ↓ e.preventDefault()  ← Stops page reload
+  ↓ Validate name & phone
+  ↓ submitting = true  ← Disables button
+  ↓ Append budget & location to notes
+  ↓ addLead() → API call to backend
+  ↓ Success: toast + navigate to /leads
+  ↓ submitting = false</div>
+
+<h3>5.3 PipelineBoard.jsx</h3>
+<p><strong>Purpose:</strong> Kanban board (like Trello). Drag leads between stage columns.</p>
+<p>Uses <code>Map</code> to group leads by stage, <code>useMemo</code> for performance. See Section 7 for drag & drop details.</p>
+
+<h3>5.4 Leads.jsx</h3>
+<p><strong>Purpose:</strong> Table view of ALL leads with search + filter.</p>
+<pre><code>const filtered = leads.filter((l) => {
+  if (search && !name.includes(search)) return false;
+  if (stageFilter !== "ALL" && l.status !== stageFilter) return false;
+  if (sourceFilter !== "ALL" && l.source !== sourceFilter) return false;
+  return true;
+});</code></pre>
+<p><code>.filter()</code> keeps items where function returns <code>true</code>, removes where <code>false</code>.</p>
+</div>
+
+<!-- SECTION 6 -->
+<div class="section" id="s6">
+<h2>6. State Management — Context API</h2>
+
+<h3>The Problem: Prop Drilling</h3>
+<pre><code>// WITHOUT Context — pass data through every level 😩
+App → Dashboard → StatsRow → StatCard (3 levels!)
+
+// WITH Context — any child accesses directly 🎉
+CrmProvider → ANY component calls useCrm()</code></pre>
+
+<h3>How CrmContext.jsx Works</h3>
+<pre><code>// Step 1: Create context (empty bulletin board)
+const CrmContext = createContext();
+
+// Step 2: Provider fills it with data
+export const CrmProvider = ({ children }) => {
+  const [leads, setLeads] = useState([]);
+  return (
+    &lt;CrmContext.Provider value={{ leads, fetchLeads, addLead }}&gt;
+      {children}
+    &lt;/CrmContext.Provider&gt;
+  );
+};
+
+// Step 3: Custom hook (shortcut)
+export const useCrm = () => useContext(CrmContext);
+
+// Step 4: Use anywhere!
+const { leads, addLead } = useCrm();</code></pre>
+
+<div class="tip">Use Context for simple state. Use Redux for complex apps with many state updates, middleware needs, and large teams.</div>
+</div>
+
+<!-- SECTION 7 -->
+<div class="section" id="s7">
+<h2>7. Drag & Drop — PipelineBoard</h2>
+
+<p><strong>Analogy:</strong> Card game — pick up a card (dragStart), move over a pile (dragOver), put it down (drop).</p>
+
+<table>
+<tr><th>Event</th><th>When</th><th>What Happens</th></tr>
+<tr><td><code>onDragStart</code></td><td>Pick up card</td><td><code>e.dataTransfer.setData('leadId', id)</code></td></tr>
+<tr><td><code>onDragOver</code></td><td>Hover over column</td><td><code>e.preventDefault()</code> — allows dropping</td></tr>
+<tr><td><code>onDrop</code></td><td>Release card</td><td>Read ID, update status via API</td></tr>
+</table>
+
+<pre><code>const handleDrop = (e, status) => {
+  e.preventDefault();
+  const leadId = e.dataTransfer.getData('leadId');
+  if (leadId) updateStatus(leadId, status);  // API + state update
+  setDragOverStage(null);
+};</code></pre>
+
+<div class="important"><code>e.preventDefault()</code> in <code>onDragOver</code> is <strong>MANDATORY</strong>. Browsers don't allow dropping by default. This is the #1 beginner mistake!</div>
+</div>
+
+<!-- SECTION 8 -->
+<div class="section" id="s8">
+<h2>8. Regex & Smart Input Parsing</h2>
+
+<p><strong>Regex</strong> = Search pattern. Like telling someone "find all words starting with R" — but way more powerful.</p>
+
+<h3>Phone Number Regex</h3>
+<pre><code>/\b(?:\+91[\s-]?)?([5-9]\d{9})\b/</code></pre>
+<table>
+<tr><th>Part</th><th>Meaning</th></tr>
+<tr><td><code>\b</code></td><td>Word boundary — prevents matching inside larger numbers</td></tr>
+<tr><td><code>(?:\+91[\s-]?)?</code></td><td>Optional +91 prefix with optional space/dash</td></tr>
+<tr><td><code>[5-9]</code></td><td>First digit: 5,6,7,8, or 9 (Indian mobile)</td></tr>
+<tr><td><code>\d{9}</code></td><td>Exactly 9 more digits</td></tr>
+</table>
+
+<h3>Position-Based Parsing Strategy</h3>
+<div class="flow">"Rahul Sharma 9876543210 2BHK Koramangala 1200000"
+  ↑ BEFORE phone ↑   ↑ phone ↑    ↑ AFTER phone ↑
+
+Step 1: Find phone → "9876543210"
+Step 2: Before phone → "Rahul Sharma" → NAME
+Step 3: After phone → find budget "1200000"
+Step 4: Remaining → "2BHK Koramangala" → LOCATION</div>
+
+<h3>Budget Suffixes</h3>
+<table>
+<tr><th>Suffix</th><th>Multiplier</th><th>Example</th></tr>
+<tr><td><code>L / Lakh / Lac</code></td><td>× 1,00,000</td><td>5L = ₹5,00,000</td></tr>
+<tr><td><code>Cr / Crore</code></td><td>× 1,00,00,000</td><td>2Cr = ₹2,00,00,000</td></tr>
+<tr><td><code>K</code></td><td>× 1,000</td><td>50K = ₹50,000</td></tr>
+</table>
+</div>
+
+<!-- SECTION 9 -->
+<div class="section" id="s9">
+<h2>9. Interview Questions & Answers</h2>
+
+<div class="qa">
+<div class="qa-q">Q1: What is the difference between props and state?</div>
+<table>
+<tr><th>Aspect</th><th>Props</th><th>State</th></tr>
+<tr><td>Who controls?</td><td>Parent component</td><td>Component itself</td></tr>
+<tr><td>Can it change?</td><td>Read-only</td><td>Yes, via setter</td></tr>
+<tr><td>Direction</td><td>Parent → Child</td><td>Internal</td></tr>
+</table>
+</div>
+
+<div class="qa">
+<div class="qa-q">Q2: What are controlled components?</div>
+<p>A controlled component's value is managed by React state, not the DOM. The input shows what state tells it. Benefits: single source of truth, easy validation, easy reset.</p>
+</div>
+
+<div class="qa">
+<div class="qa-q">Q3: Explain useEffect with examples from this codebase.</div>
+<p>In Leads.jsx: <code>useEffect(() => { fetchLeads(); fetchAgents(); }, [])</code><br>
+Empty <code>[]</code> = run ONCE on mount. Used for initial data fetching. Without <code>[]</code> = infinite loop!</p>
+</div>
+
+<div class="qa">
+<div class="qa-q">Q4: Context API vs Redux?</div>
+<p><strong>Context:</strong> Simple state, small apps, no middleware needed. <strong>Redux:</strong> Complex state, large teams, need devtools/middleware. GharPayy uses Context because state is simple.</p>
+</div>
+
+<div class="qa">
+<div class="qa-q">Q5: Explain the CRM architecture.</div>
+<p>"3-tier: Presentation (React), Business Logic (Express), Data (MongoDB). Frontend talks to backend via REST APIs. Uses Context for state management to avoid prop drilling."</p>
+</div>
+
+<div class="qa">
+<div class="qa-q">Q6: What is a REST API? Name HTTP methods.</div>
+<table>
+<tr><th>Method</th><th>Purpose</th><th>Example</th></tr>
+<tr><td>GET</td><td>Retrieve data</td><td>GET /api/leads</td></tr>
+<tr><td>POST</td><td>Create data</td><td>POST /api/leads</td></tr>
+<tr><td>PATCH</td><td>Update data</td><td>PATCH /api/leads/:id/status</td></tr>
+<tr><td>DELETE</td><td>Remove data</td><td>DELETE /api/leads/:id</td></tr>
+</table>
+</div>
+
+<div class="qa">
+<div class="qa-q">Q7: Drag-and-drop doesn't work. How to debug?</div>
+<ol>
+<li>Check <code>onDragOver</code> has <code>e.preventDefault()</code></li>
+<li>Check <code>dataTransfer.getData</code> returns correct ID</li>
+<li>Check Network tab — is API call made? Response?</li>
+<li>Check <code>updateStatus</code> — does state update correctly?</li>
+<li>Check MongoDB — did status change in DB?</li>
+</ol>
+</div>
+
+<div class="qa">
+<div class="qa-q">Q8: How would you add "filter by date range"?</div>
+<ol>
+<li>Add <code>startDate</code> & <code>endDate</code> state</li>
+<li>Add date input fields in filter bar</li>
+<li>In filter logic: check <code>createdAt</code> is within range</li>
+<li>Consider debouncing for large datasets</li>
+</ol>
+</div>
+</div>
+
+<!-- SECTION 10 -->
+<div class="section" id="s10">
+<h2>10. Common Beginner Mistakes</h2>
+
+<div class="mistake">
+<div class="mistake-title">❌ Mistake 1: Forgetting e.preventDefault()</div>
+<p class="wrong">Wrong: Form submits → page reloads → data lost!</p>
+<p class="right">Fix: Add <code>e.preventDefault()</code> at the start of handleSubmit</p>
+</div>
+
+<div class="mistake">
+<div class="mistake-title">❌ Mistake 2: Mutating State Directly</div>
+<pre><code>// ❌ WRONG — React won't re-render!
+form.name = "Rahul";
+
+// ✅ CORRECT — Create new object
+setForm(f => ({ ...f, name: "Rahul" }));</code></pre>
+<p>React compares by <strong>reference</strong>. Same object = "nothing changed".</p>
+</div>
+
+<div class="mistake">
+<div class="mistake-title">❌ Mistake 3: Missing key prop in lists</div>
+<pre><code>// ❌ {leads.map(l => &lt;Card lead={l} /&gt;)}
+// ✅ {leads.map(l => &lt;Card key={l._id} lead={l} /&gt;)}</code></pre>
+<p>Without <code>key</code>, React re-renders the ENTIRE list.</p>
+</div>
+
+<div class="mistake">
+<div class="mistake-title">❌ Mistake 4: useEffect without dependencies</div>
+<pre><code>// ❌ INFINITE LOOP! Runs → fetches → state changes → runs again...
+useEffect(() => { fetchLeads(); });
+
+// ✅ Runs only once
+useEffect(() => { fetchLeads(); }, []);</code></pre>
+</div>
+
+<div class="mistake">
+<div class="mistake-title">❌ Mistake 5: No loading/error handling</div>
+<pre><code>// ✅ Production-ready pattern:
+setSubmitting(true);
+try {
+  await api.createLead(form);
+  toast.success('Created!');
+} catch (err) {
+  toast.error('Failed!');
+} finally {
+  setSubmitting(false);
+}</code></pre>
+</div>
+
+<div class="mistake">
+<div class="mistake-title">❌ Mistake 6: Using || instead of ??</div>
+<pre><code>// ❌ 0 || "N/A" = "N/A" (0 is falsy!)
+// ✅ 0 ?? "N/A" = 0    (?? only checks null/undefined)</code></pre>
+</div>
+
+<div class="tip">For interviews, always explain <strong>WHY</strong> you made a choice: "I used Context API instead of Redux because the state is simple — adding Redux would be over-engineering."</div>
+</div>
+
+<div style="text-align:center;margin-top:3rem;padding:2rem;border-top:1px solid var(--surface2)">
+<p style="color:var(--text2);font-size:.9rem">Built with ❤️ for interview preparation — GharPayy CRM Guide</p>
+</div>
+
+</body>
+</html>
